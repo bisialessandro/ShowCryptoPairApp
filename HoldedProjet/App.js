@@ -7,21 +7,23 @@
  */
 
 import React, {Component} from 'react';
-import WelcomePageContainer from './src/screens/WelcomePage/WelcomePageContainer';
 import {ImageBackground,  StyleSheet,View} from 'react-native';
-import background from './src/assets/img/background.jpg';
 
-
+import AppStack from './src/router/AppStack';
+import {navigationService} from "./src/services/NavigationService";
 
 export default class App extends Component {
   render() {
     return (
 
-        <ImageBackground  source={background} style={styles.container}>
-            <View>
-                 <WelcomePageContainer></WelcomePageContainer>
-            </View>
-        </ImageBackground>
+        <View style={styles.container}>
+
+                <AppStack ref={navigatorRef => {
+                    navigationService.setTopLevelNavigator(navigatorRef);
+                }}/>
+
+        </View>
+
 
     );
   }

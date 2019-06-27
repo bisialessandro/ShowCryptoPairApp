@@ -1,12 +1,12 @@
 /**
  * Created by abisi on 2019-06-25
  */
-import React , {Component} from 'react';
+import React , {PureComponent} from 'react';
 import WelcomePageComponent from './WelcomePageComponent';
 import {View} from 'react-native';
 
 
-class WelcomePageContainer extends Component {
+class WelcomePageContainer extends PureComponent {
 
     onStartPress = () => {
 
@@ -15,9 +15,8 @@ class WelcomePageContainer extends Component {
 
     render(){
 
-        return <View>
-            <WelcomePageComponent onStartPress={this.onStartPress}> </WelcomePageComponent>
-        </View>
+        return <WelcomePageComponent onStartPress={this.onStartPress}> </WelcomePageComponent>
+
 
     }
 
