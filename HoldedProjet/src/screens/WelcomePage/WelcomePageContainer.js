@@ -9,7 +9,7 @@ import {View} from 'react-native';
 class WelcomePageContainer extends PureComponent {
 
     onStartPress = () => {
-
+        this.props.navigation.navigate('Main');
     }
 
 
