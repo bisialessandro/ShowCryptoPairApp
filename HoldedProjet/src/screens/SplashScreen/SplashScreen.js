@@ -6,6 +6,8 @@ import {View,StyleSheet} from 'react-native';
 import logo from '../../assets/img/holded.png'
 import ImageLoader from '../../components/ImageLoader/ImageLoader';
 import {COLOR_PRIMARY_ORANGE} from "../../styles/Colors";
+import {CONFIG_STORAGE} from '../../config/config-storage';
+import {storageService} from "../../services/storageServices/StorageServices";
 
 
 class SplashScreen extends PureComponent{
@@ -13,7 +15,16 @@ class SplashScreen extends PureComponent{
     componentDidMount(){
         setTimeout(async () => {
             //Check if saved a property if and render
-            this.props.navigation.navigate('WelcomeScreen');
+            const firstLogin = await storageService.retrieveData(CONFIG_STORAGE.FIRST_LOGIN);
+
+            if (firstLogin === undefined) {
+                this.props.navigation.navigate('WelcomeScreen');
+            }else{
+                this.props.navigation.navigate('Main');
+            }
+
+
+
         },2000);
 
     }
