@@ -13,7 +13,7 @@ class MainContainer extends PureComponent{
 
     async componentDidMount() {
 
-        await this.props.fetchCryptoPrices();
+         this.props.fetchCryptoPrices();
 
 
     }

@@ -6,6 +6,7 @@ import {Image, ImageBackground, StyleSheet, View,ScrollView} from 'react-native'
 import background from "../../assets/img/background.jpg";
 import TextField from '../../components/TextField/TextField';
 import Card from '../../components/Card/Card';
+import ImageLoader from '../../components/Loader/Loader';
 
 const cardListaValue = [{
         "titleShortCrypto":"BTC",
@@ -21,21 +22,7 @@ const MainComponent = (props) => {
 
     return <ImageBackground source={background} style={styles.container}>
          <TextField> </TextField>
-        <ScrollView style={styles.scroll}>
-
-                        <Card
-                            positiveLastDay={cardListaValue[0].lastDayValue>0}
-                            positiveLastHour={cardListaValue[0].lastHourValue>0}
-                            positiveLast7Day={cardListaValue[0].las7DayValue>0}
-                            titleShortCrypto={cardListaValue[0].titleShortCrypto}
-                            titleCrypto={cardListaValue[0].titleCrypto}
-                            totalAmount={cardListaValue[0].totalAmount}
-                            lastHourValue={cardListaValue[0].lastHourValue}
-                            las7DayValue={cardListaValue[0].las7DayValue}
-                            lastDayValue={cardListaValue[0].lastDayValue}
-                        />
-
-        </ScrollView>
+        <ImageLoader/>
 
     </ImageBackground>
 }
@@ -44,7 +31,8 @@ const MainComponent = (props) => {
 const styles = StyleSheet.create({
     img : {
         width: '65%',
-        resizeMode:'contain'
+        resizeMode:'contain',
+
 
     },
     container : {
