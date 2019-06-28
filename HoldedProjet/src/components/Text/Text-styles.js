@@ -4,7 +4,7 @@
 import { StyleSheet } from 'react-native';
 
 import {
-    COLOR_GRAY_LIGHT,
+    COLOR_GRAY_LIGHT,COLOR_TEXT
 } from '../../styles/Colors';
 
 import {
@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize:FONT_BASE_SIZE,
-    }
+    },
+
 
 });
 

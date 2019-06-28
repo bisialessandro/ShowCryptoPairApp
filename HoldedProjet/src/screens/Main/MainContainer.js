@@ -4,13 +4,29 @@
 
 import React , {PureComponent} from 'react';
 import {View} from 'react-native';
-
+import MainComponent from './MainComponent';
+import {connect} from "react-redux";
+import {getCryptoPrices,fetchCryptoPrices} from '../../redux/binance'
 
 class MainContainer extends PureComponent{
 
+
+    async componentDidMount() {
+
+        await this.props.fetchCryptoPrices();
+
+
+    }
+
     render(){
-        return <View></View>
+        return <MainComponent crypto={this.props.cryptoPrices}></MainComponent>
     }
 }
 
-export default MainContainer;
+export default connect(
+    state => ({
+        cryptoPrices: state.binance.crypto,
+
+    }), {
+        fetchCryptoPrices
+    },)( MainContainer);

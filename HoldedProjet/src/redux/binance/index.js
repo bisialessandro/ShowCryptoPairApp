@@ -3,8 +3,8 @@ export { binance } from './binance-reducers';
 
 // Actions
 export {
-  getTokens
+  fetchCryptoPrices
 } from './binance-actions';
 
 // Selectors
-export {} from './binance-selectors';
+export {getCryptoPrices} from './binance-selectors';
