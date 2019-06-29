@@ -3,7 +3,7 @@
  */
 
 import React , {PureComponent} from 'react';
-import {View} from 'react-native';
+import {View,Alert} from 'react-native';
 import MainComponent from './MainComponent';
 import {connect} from "react-redux";
 import {getCryptoPrices,fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs} from '../../redux/binance';
@@ -19,6 +19,7 @@ class MainContainer extends PureComponent{
     constructor(props){
         super(props);
 
+
         this.state = {
             valueText:""
         }
@@ -32,7 +33,6 @@ class MainContainer extends PureComponent{
 
         if(cryptoPairs){
 
-                console.log(cryptoPairs,"prova");
                 this.props.setCryptoPairs(cryptoPairs);
         }
 
@@ -57,12 +57,65 @@ class MainContainer extends PureComponent{
             valueText:text
         })
 
-        console.log(filteredObj ,prova );
+
+
+    }
+
+    async  storageFavorite(value){
+
+
+
+
+        const valuePreferences = await storageService.retrieveData(CONFIG_STORAGE.PREFERENCES);
+
+
+        if(valuePreferences==undefined){
+            let array = [value];
+            await storageService.storeData(CONFIG_STORAGE.PREFERENCES,array.toString());
+            Alert.alert("undef",valuePreferences );
+
+        }else{
+            Alert.alert("cd",JSON.stringify(valuePreferences) );
+            let valuePreferencesString = [valuePreferences,value];
+            await storageService.storeData(CONFIG_STORAGE.PREFERENCES,valuePreferencesString.toString());
+
+        }
+    }
+
+
+    async onLongClick(value){
+
+
+        console.log("click Card");
+
+        //Control already favorite
+
+
+
+        Alert.alert(
+            'Favorite',
+            'Do you want to add the pair '+value+' to your favourite?',
+            [
+
+                {
+                    text: 'Cancel',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                },
+                {text: 'OK', onPress: async () => this.storageFavorite(value)},
+            ],
+            {cancelable: false},
+        );
+
+
+
 
     }
 
     render(){
         return <MainComponent crypto={this.props.cryptoFiltered}
+                              onLongClick={
+                                  this.onLongClick.bind(this)}
                               onChangeText={this.onChangeText.bind(this)} ></MainComponent>
     }
 }

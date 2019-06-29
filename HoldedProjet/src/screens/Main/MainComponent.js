@@ -2,13 +2,14 @@
  * Created by abisi on 2019-06-27
  */
 import React from 'react';
-import {Image,TextInput ,ImageBackground, StyleSheet, View,ScrollView,FlatList} from 'react-native';
+import {Alert,Image,TextInput ,ImageBackground, StyleSheet, View,ScrollView,FlatList} from 'react-native';
 import background from "../../assets/img/background.jpg";
 import TextField from '../../components/TextField/TextField';
 import Card from '../../components/Card/Card';
 import ImageLoader from '../../components/Loader/Loader';
 import {COLOR_HIGHLIGHT, COLOR_NEGATIVE} from "../../styles/Colors";
 import {FONT_TITLE_SIZE} from "../../styles/Font";
+
 
 const cardListaValue = [{
         "titleShortCrypto":"BTC",
@@ -22,11 +23,12 @@ const cardListaValue = [{
 
 const MainComponent = (props) => {
 
-    console.log(props.crypto)
+
 
     return <ImageBackground source={background} style={styles.container}>
         <View style={styles.StyledView}>
-            < TextInput name={"SearchPairs"} placeholder={"Search a pair"} onChangeText={ props.onChangeText} style={styles.TextInput}/>
+            < TextInput name={"SearchPairs"} placeholder={"Search a pair"}  style={styles.TextInput}/>
+
             </View>
 
         {props.crypto?(
@@ -42,6 +44,7 @@ const MainComponent = (props) => {
                     lastHourValue={cardListaValue[0].lastHourValue}
                     las7DayValue={cardListaValue[0].las7DayValue}
                     lastDayValue={cardListaValue[0].lastDayValue}
+                    onLongClick={props.onLongClick}
                 />)}
             />
 

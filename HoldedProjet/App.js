@@ -15,16 +15,18 @@ import {navigationService} from "./src/services/NavigationService";
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import persistor from "./src/redux/persistStore";
 
+
+
 export default class App extends Component {
   render() {
     return (
         <View style={styles.container}>
             <Provider store = {store}>
-                <PersistGate loading={null} persistor={persistor}>
+
                     <AppStack ref={navigatorRef => {
                         navigationService.setTopLevelNavigator(navigatorRef);
                     }}/>
-                </PersistGate>
+
             </Provider>
 
         </View>

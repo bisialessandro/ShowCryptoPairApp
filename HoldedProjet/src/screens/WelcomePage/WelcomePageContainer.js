@@ -19,7 +19,7 @@ class WelcomePageContainer extends PureComponent {
 
     render(){
 
-        return <WelcomePageComponent onStartPress={this.onStartPress}> </WelcomePageComponent>
+        return <WelcomePageComponent onStartPress={this.onStartPress.bind(this)}> </WelcomePageComponent>
 
 
     }

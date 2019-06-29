@@ -3,6 +3,8 @@
  */
 import {binance} from './binance';
 
+
 export const rootReducer = {
-    binance
+    binance,
+
 };
