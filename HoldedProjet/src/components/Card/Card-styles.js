@@ -52,6 +52,8 @@ const styles = StyleSheet.create({
     textTotalAmount:{
         fontWeight:FONT_TITLE_WEIGHT,
         color:COLOR_TEXT,
+        alignItems:'center'
+
 
 
     },

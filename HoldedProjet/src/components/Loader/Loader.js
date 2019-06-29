@@ -16,12 +16,14 @@ const ImageLoader = (props) => {
 const styles = StyleSheet.create({
     LoaderStyle:{
 
+        backgroundColor:'transparent'
 
     },
     View:{
         flex:1,
         alignSelf:'center',
-        flexDirection:'column'
+        flexDirection:'column',
+        backgroundColor:'transparent'
     }
 });
 export default ImageLoader;

@@ -6,14 +6,16 @@ import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { COLOR_HIGHLIGHT,COLOR_GRAY_DARK,COLOR_TEXT } from '../../styles/Colors';
+import { COLOR_HIGHLIGHT,COLOR_GRAY_DARK,COLOR_TEXT,COLOR_NEGATIVE } from '../../styles/Colors';
+
+import {FONT_TITLE_SIZE} from "../../styles/Font";
 
 const TextField = props => {
     return (
         <TextInput
             value={props.value}
             placeholderTextColor={props.placeholderTextColor}
-            onChange={event => props.onChangeText(event, props.name)}
+            onChange={props.onChangeText}
             underlineColorAndroid="transparent"
             placeholder={props.placeholder}
             style={[styles.TextInput, props.style,
@@ -47,10 +49,12 @@ TextField.propTypes = {
 
 const styles = StyleSheet.create({
     TextInput: {
-        padding: 0,
         marginTop: 0,
         borderBottomWidth: 2,
         borderBottomColor: COLOR_HIGHLIGHT,
+        backgroundColor:COLOR_NEGATIVE,
+        fontSize:FONT_TITLE_SIZE,
+        padding:10
     },
     NotEditableTextColor:{
         color: COLOR_GRAY_DARK

@@ -25,7 +25,7 @@ class SplashScreen extends PureComponent{
 
 
 
-        },2000);
+        },0);//2000
 
     }
 

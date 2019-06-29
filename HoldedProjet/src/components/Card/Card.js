@@ -16,7 +16,7 @@ const Card = (props) => {
 
              <View style={styles.leftSizeView}>
                  <Image source={props.img?props.img:bcLogo} style={styles.ImgStyle}/>
-                  <Text style={styles.textTitleDescription}>{props.titleShortCrypto+" | "}</Text>
+
                   <Text style={styles.textTotalAmount}>{props.titleCrypto+""}</Text>
              </View>
              <View style={styles.rightSizeView}>

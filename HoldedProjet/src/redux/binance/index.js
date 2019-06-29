@@ -3,7 +3,9 @@ export { binance } from './binance-reducers';
 
 // Actions
 export {
-  fetchCryptoPrices
+  fetchCryptoPrices,
+  setCryptoPairs,
+  setFilteredCryptoPairs,
 } from './binance-actions';
 
 // Selectors
