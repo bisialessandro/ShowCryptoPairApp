@@ -14,7 +14,8 @@ class MainContainer extends PureComponent{
 
     state : {
         valueText:"",
-        preferences:[]
+        preferences:[],
+        interval:null
     }
 
     constructor(props){
@@ -25,6 +26,18 @@ class MainContainer extends PureComponent{
             valueText:""
         }
     }
+
+    componentWillUnmount() {
+        clearInterval(this.state.interval);
+    }
+
+
+   async startAuthenticationPolling(){
+        return setInterval(() => {
+             this.props.fetchCryptoPrices();
+        }, 1000);
+    };
+
 
     async componentDidMount() {
 
@@ -47,9 +60,12 @@ class MainContainer extends PureComponent{
 
         await storageService.storeData(CONFIG_STORAGE.CRYPTO_PAIR,updatedValue);
 
+        this.setState({interval: this.startAuthenticationPolling()});
 
 
     }
+
+
 
     onChangeText = (text,prova) => {
 
