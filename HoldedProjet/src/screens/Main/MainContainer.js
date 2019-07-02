@@ -13,7 +13,8 @@ import {CONFIG_STORAGE} from "../../config/config-storage";
 class MainContainer extends PureComponent{
 
     state : {
-        valueText:""
+        valueText:"",
+        preferences:[]
     }
 
     constructor(props){
@@ -38,9 +39,14 @@ class MainContainer extends PureComponent{
 
         let updatedValue = await this.props.fetchCryptoPrices();
 
+        const valuePreferences = await storageService.retrieveData(CONFIG_STORAGE.PREFERENCES);
 
+        this.setState({
+            preferences:valuePreferences
+        });
 
         await storageService.storeData(CONFIG_STORAGE.CRYPTO_PAIR,updatedValue);
+
 
 
     }
@@ -64,49 +70,123 @@ class MainContainer extends PureComponent{
     async  storageFavorite(value){
 
 
+        const valuePreferences = await storageService.retrieveData(CONFIG_STORAGE.PREFERENCES);
+
+
+        if(valuePreferences==undefined||valuePreferences===""){
+
+            Alert.alert(JSON.stringify([value]),"value");
+
+            let array = [];
+
+            array.push(value);
+
+           const  updatedValue = await storageService.storeData(CONFIG_STORAGE.PREFERENCES,JSON.stringify(array));
+
+           await this.setState({
+                preferences:array
+            })
+
+
+        }else{
+
+
+            //Alert.alert("cd",valuePreferences.replace(/[\/]/g, "" ));
+            let valuePreferencesString = JSON.parse(valuePreferences.replace(/[\/]/g, "" ));
+
+            valuePreferencesString.push(value);
+
+            const updatedValue = await storageService.storeData(CONFIG_STORAGE.PREFERENCES,JSON.stringify(valuePreferencesString));
+
+           await this.setState({
+                preferences:valuePreferencesString
+            })
+
+
+        }
+
+
+        this.props.fetchCryptoPrices();
+
+
+
+
+    }
+
+
+    async  removeFavourite(value){
 
 
         const valuePreferences = await storageService.retrieveData(CONFIG_STORAGE.PREFERENCES);
 
 
         if(valuePreferences==undefined){
-            let array = [value];
-            await storageService.storeData(CONFIG_STORAGE.PREFERENCES,array.toString());
-            Alert.alert("undef",valuePreferences );
+
+            Alert.alert("undef");
 
         }else{
-            Alert.alert("cd",JSON.stringify(valuePreferences) );
-            let valuePreferencesString = [valuePreferences,value];
-            await storageService.storeData(CONFIG_STORAGE.PREFERENCES,valuePreferencesString.toString());
 
+            Alert.alert("undef"+valuePreferences.toString(),value );
+
+            let valuePreferencesString =JSON.parse(valuePreferences.replace(/[\/]/g, "" ));
+
+            valuePreferencesString = valuePreferencesString.filter(key => !(key===value))
+
+
+
+            const updatedValue = await storageService.storeData(CONFIG_STORAGE.PREFERENCES,JSON.stringify(valuePreferencesString));
+
+
+           await this.setState({
+                preferences:valuePreferencesString
+            })
         }
+
+        this.props.fetchCryptoPrices();
+
     }
+
+
+
 
 
     async onLongClick(value){
 
-
-        console.log("click Card");
-
         //Control already favorite
 
+        if(this.state.preferences.includes(value)){
 
+            Alert.alert(
+                'Favorite',
+                'Do you want to remove the pair ' + value + ' from your favourite?',
+                [
 
-        Alert.alert(
-            'Favorite',
-            'Do you want to add the pair '+value+' to your favourite?',
-            [
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    {text: 'OK', onPress: async () => this.removeFavourite(value)},
+                ],
+                {cancelable: false},
+            );
+        }else {
+            Alert.alert(
+                'Favorite',
+                'Do you want to add the pair ' + value + ' to your favourite?',
+                [
 
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel',
-                },
-                {text: 'OK', onPress: async () => this.storageFavorite(value)},
-            ],
-            {cancelable: false},
-        );
+                    {
+                        text: 'Cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                        style: 'cancel',
+                    },
+                    {text: 'OK', onPress: async () => this.storageFavorite(value)},
+                ],
+                {cancelable: false},
+            );
 
+        }
 
 
 
@@ -116,6 +196,8 @@ class MainContainer extends PureComponent{
         return <MainComponent crypto={this.props.cryptoFiltered}
                               onLongClick={
                                   this.onLongClick.bind(this)}
+                              preferences={this.state.preferences}
+
                               onChangeText={this.onChangeText.bind(this)} ></MainComponent>
     }
 }

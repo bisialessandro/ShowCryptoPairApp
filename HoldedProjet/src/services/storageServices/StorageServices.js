@@ -26,6 +26,14 @@ class StorageService {
         }
     };
 
+    storeData = (key, value) => {
+        try {
+            AsyncStorage.setItem(key, value);
+        } catch (error) {
+            console.error('Error while storing: ' + error);
+        }
+    };
+
     mergeData = async (key, value) => {
         try {
             AsyncStorage.mergeItem(key, value);

@@ -10,8 +10,8 @@ import TouchableItem from "react-navigation/src/views/TouchableItem";
 const Card = (props) => {
 
 
-    return <View style={styles.CardContainer} >
-        <TouchableOpacity key={props.titleCrypto} onLongPress={() => props.onLongClick(props.titleCrypto)} >
+    return <View style={props.selectedPref?(styles.CardContainerSelcted):(styles.CardContainer)} >
+        <TouchableOpacity key={props.titleCrypto} onLongPress={(() => props.onLongClick(props.titleCrypto))} >
             <View style={styles.RowStatistics} >
                  <View s
                        tyle={styles.leftSizeView}>
@@ -29,7 +29,7 @@ const Card = (props) => {
                     <Text style={styles.textTitleDescription}>{"1h: "}</Text>
                     <Text  style={[
 
-                        props.positiveLastHour ? styles.statisticValuePositive: styles.statisticValueNegative,,
+                        props.positiveLastHour ? styles.statisticValuePositive: styles.statisticValueNegative,
 
 
                     ]}>{props.lastHourValue+"%"}</Text>

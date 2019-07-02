@@ -39,6 +39,7 @@ const MainComponent = (props) => {
                     positiveLastHour={cardListaValue[0].lastHourValue > 0}
                     positiveLast7Day={cardListaValue[0].las7DayValue > 0}
                     titleShortCrypto={cardListaValue[0].titleShortCrypto}
+                    selectedPref={props.preferences.includes(key)}
                     titleCrypto={key}
                     totalAmount={item[key]}
                     lastHourValue={cardListaValue[0].lastHourValue}
