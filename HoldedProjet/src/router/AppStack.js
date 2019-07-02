@@ -7,7 +7,7 @@ import React from 'react';
 import {createSwitchNavigator} from 'react-navigation';
 
 import WelcomeStack from './WelcomeStack';
-import MainStack from './MainStack';
+import DrawerNavigation from './DrawerNavigation';
 import SplashStack from "./SplashStack";
 
 const AppStack = createSwitchNavigator(
@@ -15,8 +15,8 @@ const AppStack = createSwitchNavigator(
         WelcomeScreen: {
             screen: WelcomeStack,
         },
-        Main: {
-            screen: MainStack,
+        DrawerNavigation: {
+            screen: DrawerNavigation,
         },
         Splash:{
             screen: SplashStack,

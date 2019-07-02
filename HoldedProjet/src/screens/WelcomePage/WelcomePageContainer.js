@@ -13,7 +13,7 @@ class WelcomePageContainer extends PureComponent {
 
         await storageService.storeData(CONFIG_STORAGE.FIRST_LOGIN,"false");
 
-        await this.props.navigation.navigate('Main');
+        await this.props.navigation.navigate('DrawerNavigation');
     }
 
 

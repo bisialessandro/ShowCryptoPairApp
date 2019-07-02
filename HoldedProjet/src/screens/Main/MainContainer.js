@@ -3,12 +3,13 @@
  */
 
 import React , {PureComponent} from 'react';
-import {View,Alert} from 'react-native';
+import {View, Alert, Text} from 'react-native';
 import MainComponent from './MainComponent';
 import {connect} from "react-redux";
 import {getCryptoPrices,fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs} from '../../redux/binance';
 import {storageService} from "../../services/storageServices/StorageServices";
 import {CONFIG_STORAGE} from "../../config/config-storage";
+import DrawerIcon from "../../components/Drawer/DrawerIcon";
 
 
 class MainContainer extends PureComponent{
@@ -18,6 +19,9 @@ class MainContainer extends PureComponent{
         preferences:[],
         interval:null
     }
+
+
+
 
     constructor(props){
         super(props);
@@ -42,9 +46,8 @@ class MainContainer extends PureComponent{
 
     async componentDidMount() {
 
+
         let cryptoPairs = await  storageService.retrieveData(CONFIG_STORAGE.CRYPTO_PAIR);
-
-
 
         if(cryptoPairs){
 
@@ -139,11 +142,11 @@ class MainContainer extends PureComponent{
 
         if(valuePreferences==undefined){
 
-            Alert.alert("undef");
+
 
         }else{
 
-            Alert.alert("undef"+valuePreferences.toString(),value );
+            //Alert.alert("undef"+valuePreferences.toString(),value );
 
             let valuePreferencesString =JSON.parse(valuePreferences.replace(/[\/]/g, "" ));
 
@@ -171,7 +174,7 @@ class MainContainer extends PureComponent{
 
         //Control already favorite
 
-        if(this.state.preferences.includes(value)){
+        if(this.state.preferences&&this.state.preferences.includes(value)){
 
             Alert.alert(
                 'Favorite',
@@ -215,6 +218,8 @@ class MainContainer extends PureComponent{
 
 
     render(){
+
+
         return  <MainComponent crypto={this.props.cryptoFiltered}
                                   onLongClick={
                                       this.onLongClick.bind(this)}

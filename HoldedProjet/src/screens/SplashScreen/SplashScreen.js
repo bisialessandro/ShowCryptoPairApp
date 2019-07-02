@@ -20,7 +20,7 @@ class SplashScreen extends PureComponent{
             if (firstLogin === undefined) {
                 this.props.navigation.navigate('WelcomeScreen');
             }else{
-                this.props.navigation.navigate('Main');
+                this.props.navigation.navigate('DrawerNavigation');
             }
 
 
