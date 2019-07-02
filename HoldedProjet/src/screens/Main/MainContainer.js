@@ -10,6 +10,7 @@ import {getCryptoPrices,fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs}
 import {storageService} from "../../services/storageServices/StorageServices";
 import {CONFIG_STORAGE} from "../../config/config-storage";
 
+
 class MainContainer extends PureComponent{
 
     state : {
@@ -208,13 +209,19 @@ class MainContainer extends PureComponent{
 
     }
 
-    render(){
-        return <MainComponent crypto={this.props.cryptoFiltered}
-                              onLongClick={
-                                  this.onLongClick.bind(this)}
-                              preferences={this.state.preferences}
+    alertInfo = () => {
 
-                              onChangeText={this.onChangeText.bind(this)} ></MainComponent>
+    }
+
+
+    render(){
+        return  <MainComponent crypto={this.props.cryptoFiltered}
+                                  onLongClick={
+                                      this.onLongClick.bind(this)}
+                                  preferences={this.state.preferences}
+                                    alertInfo={this.alertInfo}
+                                  onChangeText={this.onChangeText.bind(this)} ></MainComponent>
+
     }
 }
 
