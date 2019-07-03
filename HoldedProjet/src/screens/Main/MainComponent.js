@@ -10,6 +10,7 @@ import ImageLoader from '../../components/Loader/Loader';
 import {COLOR_HIGHLIGHT, COLOR_NEGATIVE} from "../../styles/Colors";
 import {FONT_TITLE_SIZE} from "../../styles/Font";
 import info from '../../assets/img/info.png'
+import MessageErrorPage from '../../components/MessageErrorPage/MessageErrorPage'
 
 
 const cardListaValue = [{
@@ -28,16 +29,18 @@ const MainComponent = (props) => {
 
     return <ImageBackground source={background} style={styles.container}>
 
-        <View style={styles.StyledView} >
-            < TextInput name={"SearchPairs"} placeholder={"Search a pair"}  style={styles.TextInput}/>
 
-            <TouchableHighlight  style={styles.ContainerButton} onPress={props.showAlertInfo}>
-                <Image style={styles.ImageStyle} source={info} />
-            </TouchableHighlight>
 
-        </View>
+        {((props.isFetchingCrypto))?(<ImageLoader/>):(props.crypto?(
+            <View>
+            <View style={styles.StyledView} >
+                < TextInput name={"SearchPairs"} placeholder={"Search a pair"}  style={styles.TextInput}/>
 
-        {props.crypto?(
+                <TouchableHighlight  style={styles.ContainerButton} onPress={props.alertInfo}>
+                    <Image style={styles.ImageStyle} source={info} />
+                </TouchableHighlight>
+
+            </View>
             <FlatList
 
                 data={props.crypto}
@@ -55,10 +58,9 @@ const MainComponent = (props) => {
                     lastDayValue={cardListaValue[0].lastDayValue}
                     onLongClick={props.onLongClick}
                 />)}
-            />
+            /></View>):(<MessageErrorPage text={"No data found! "}/>)
 
-
-        ):(<ImageLoader/>)}
+        )}
 
 
 

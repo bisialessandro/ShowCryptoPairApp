@@ -1,6 +1,7 @@
 const defaultState = {
   crypto:null,
-  cryptoFiltered:null
+  cryptoFiltered:null,
+  isFetchingCrypto:false
 };
 
 export const binance = (state = defaultState, action) => {
@@ -13,12 +14,14 @@ export const binance = (state = defaultState, action) => {
       return {
         ...state,
         crypto:payload,
-        cryptoFiltered:payload
+        cryptoFiltered:payload,
+        isFetchingCrypto:false
 
       };
-    case 'binance.fetchCryptoPricesError':
+    case 'binance.fetchCryptoricesError':
       return {
         ...state,
+        isFetchingCrypto:false
 
       }
 
@@ -33,6 +36,13 @@ export const binance = (state = defaultState, action) => {
       return {
         ...state,
         cryptoFiltered:payload
+
+
+      }
+    case 'binance.startFetchData':
+      return {
+        ...state,
+        isFetchingCrypto:true
 
 
       }

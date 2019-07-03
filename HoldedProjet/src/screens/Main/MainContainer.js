@@ -3,13 +3,13 @@
  */
 
 import React , {PureComponent} from 'react';
-import {View, Alert, Text} from 'react-native';
+import { Alert} from 'react-native';
 import MainComponent from './MainComponent';
 import {connect} from "react-redux";
-import {getCryptoPrices,fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs} from '../../redux/binance';
+import {fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs,pollingFetchingCrypto} from '../../redux/binance';
 import {storageService} from "../../services/storageServices/StorageServices";
 import {CONFIG_STORAGE} from "../../config/config-storage";
-import DrawerIcon from "../../components/Drawer/DrawerIcon";
+
 
 
 class MainContainer extends PureComponent{
@@ -32,14 +32,14 @@ class MainContainer extends PureComponent{
         }
     }
 
-    componentWillUnmount() {
+   componentWillUnmount() {
         clearInterval(this.state.interval);
     }
 
 
    async startAuthenticationPolling(){
         return setInterval(() => {
-             this.props.fetchCryptoPrices();
+             this.props.pollingFetchingCrypto();
         }, 1000);
     };
 
@@ -225,7 +225,8 @@ class MainContainer extends PureComponent{
                                       this.onLongClick.bind(this)}
                                   preferences={this.state.preferences}
                                     alertInfo={this.alertInfo}
-                                  onChangeText={this.onChangeText.bind(this)} ></MainComponent>
+                                  onChangeText={this.onChangeText.bind(this)}
+        isFetchingCrypto={this.props.isFetchingCrypto}></MainComponent>
 
     }
 }
@@ -233,8 +234,9 @@ class MainContainer extends PureComponent{
 export default connect(
     state => ({
         cryptoPrices: state.binance.crypto,
-        cryptoFiltered:state.binance.cryptoFiltered
+        cryptoFiltered:state.binance.cryptoFiltered,
+        isFetchingCrypto:state.binance.isFetchingCrypto
 
     }), {
-        fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs
+        fetchCryptoPrices,setCryptoPairs,setFilteredCryptoPairs,pollingFetchingCrypto
     },)( MainContainer);

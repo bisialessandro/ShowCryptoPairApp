@@ -6,7 +6,8 @@ export {
   fetchCryptoPrices,
   setCryptoPairs,
   setFilteredCryptoPairs,
+  pollingFetchingCrypto
 } from './binance-actions';
 
 // Selectors
-export {getCryptoPrices} from './binance-selectors';
+export {getCryptoPrices,isFetchingCrypto} from './binance-selectors';
