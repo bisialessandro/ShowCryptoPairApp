@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "HoldedProjet-tvOS.app"
-               BlueprintName = "HoldedProjet-tvOS"
-               ReferencedContainer = "container:HoldedProjet.xcodeproj">
+               BuildableName = "HoldedProject-tvOS.app"
+               BlueprintName = "HoldedProject-tvOS"
+               ReferencedContainer = "container:HoldedProject.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "HoldedProjet-tvOSTests.xctest"
-               BlueprintName = "HoldedProjet-tvOSTests"
-               ReferencedContainer = "container:HoldedProjet.xcodeproj">
+               BuildableName = "HoldedProject-tvOSTests.xctest"
+               BlueprintName = "HoldedProject-tvOSTests"
+               ReferencedContainer = "container:HoldedProject.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "HoldedProjet-tvOSTests.xctest"
-               BlueprintName = "HoldedProjet-tvOSTests"
-               ReferencedContainer = "container:HoldedProjet.xcodeproj">
+               BuildableName = "HoldedProject-tvOSTests.xctest"
+               BlueprintName = "HoldedProject-tvOSTests"
+               ReferencedContainer = "container:HoldedProject.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "HoldedProjet-tvOS.app"
-            BlueprintName = "HoldedProjet-tvOS"
-            ReferencedContainer = "container:HoldedProjet.xcodeproj">
+            BuildableName = "HoldedProject-tvOS.app"
+            BlueprintName = "HoldedProject-tvOS"
+            ReferencedContainer = "container:HoldedProject.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "HoldedProjet-tvOS.app"
-            BlueprintName = "HoldedProjet-tvOS"
-            ReferencedContainer = "container:HoldedProjet.xcodeproj">
+            BuildableName = "HoldedProject-tvOS.app"
+            BlueprintName = "HoldedProject-tvOS"
+            ReferencedContainer = "container:HoldedProject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "HoldedProjet-tvOS.app"
-            BlueprintName = "HoldedProjet-tvOS"
-            ReferencedContainer = "container:HoldedProjet.xcodeproj">
+            BuildableName = "HoldedProject-tvOS.app"
+            BlueprintName = "HoldedProject-tvOS"
+            ReferencedContainer = "container:HoldedProject.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

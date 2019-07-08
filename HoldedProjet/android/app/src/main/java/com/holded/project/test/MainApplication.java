@@ -1,4 +1,4 @@
-package com.holdedprojet;
+package com.holded.project.test;
 
 import android.app.Application;
 
