@@ -60,20 +60,36 @@ class MainContainer extends PureComponent{
 
         await storageService.storeData(CONFIG_STORAGE.CRYPTO_PAIR,updatedValue);
 
-        this.setState({interval: this.startAuthenticationPolling()});
+       // this.setState({interval: this.startAuthenticationPolling()});
 
-        clearInterval(this.state.interval);
+
 
 
     }
 
+    async pollingFunction() {
+
+
+               let finished = await this.props.pollingFetchingCrypto();
+
+               let valuesFiltered = await this.filterCrypto(this.state.valueText);
+
+               let filterSet = await this.props.setFilteredCryptoPairs(valuesFiltered);
+
+
+
+    }
+
+    async startAuthenticationPolling(){
+        return setInterval(() => this.pollingFunction(), 5000);
+    };
 
 
     onChangeText = (text,prova) => {
 
 
 
-        let filteredObj = this.props.cryptoPrices.filter(item =>Object.keys(item)[0].includes(text.toUpperCase()));
+        let filteredObj =this.filterCrypto(text);
 
         this.props.setFilteredCryptoPairs(filteredObj);
 
@@ -85,6 +101,15 @@ class MainContainer extends PureComponent{
 
     }
 
+
+    filterCrypto = (text) => {
+
+        let filteredObj = this.props.cryptoPrices.filter(item =>Object.keys(item)[0].includes(text.toUpperCase()));
+
+
+        return filteredObj;
+    }
+
     async  storageFavorite(value){
 
 
@@ -93,7 +118,6 @@ class MainContainer extends PureComponent{
 
         if(valuePreferences==undefined||valuePreferences===""){
 
-            Alert.alert(JSON.stringify([value]),"value");
 
             let array = [];
 
@@ -216,10 +240,6 @@ class MainContainer extends PureComponent{
 
     }
 
-    onFocus = () => {
-
-        clearInterval(this.state.interval);
-    }
 
 
     render(){
@@ -232,6 +252,7 @@ class MainContainer extends PureComponent{
                                   preferences={this.state.preferences}
                                     alertInfo={this.alertInfo}
                                   onChangeText={this.onChangeText.bind(this)}
+                               fetchData={this.props.fetchCryptoPrices}
         isFetchingCrypto={this.props.isFetchingCrypto}></MainComponent>
 
     }

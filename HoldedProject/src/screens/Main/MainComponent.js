@@ -25,13 +25,14 @@ const cardListaValue = [{
 
 const MainComponent = (props) => {
 
+    console.log(props.crypto,"crypto")
 
 
     return <ImageBackground source={background} style={styles.container}>
 
 
 
-        {((props.isFetchingCrypto))?(<ImageLoader/>):(props.crypto?(
+        {((props.isFetchingCrypto))?(<ImageLoader onReconnect={props.fetchData}/>):(props.crypto?(
             <View>
             <View style={styles.StyledView} >
                 < TextInput name={"SearchPairs"} placeholder={"Search a pair"}  onFocus={props.onFocus}

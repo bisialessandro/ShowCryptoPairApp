@@ -7,6 +7,7 @@ import {Button, Image, TouchableHighlight, View,Alert,Text} from 'react-native';
 import MainContainer from "../screens/Main/MainContainer";
 import drawer from '../assets/img/drawer.png'
 import DrawerIcon from '../components/Drawer/DrawerIcon';
+import TouchableImage from '../components/TouchableImage/TouchableImage';
 
 const MainStack = createStackNavigator({
     Main:{
@@ -16,6 +17,10 @@ const MainStack = createStackNavigator({
             headerLeft: (
 
                 <DrawerIcon navigation={navigation} />
+            ),
+            headerRight: (
+
+                <TouchableImage  />
             )
         })
 

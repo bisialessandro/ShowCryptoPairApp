@@ -34,13 +34,12 @@ export const setCryptoPairs = (cryptoPairs) => dispatch => {
 
 export const setFilteredCryptoPairs = (filteredItems) => dispatch => {
 
-
     dispatch({type: 'binance.setFilteredCryptoPrices',payload:filteredItems});
 
 };
 
 
-export const pollingFetchingCrypto = () => dispatch => {
+export const pollingFetchingCrypto = (text) => dispatch => {
 
     client.prices().then( result => {
 
@@ -51,7 +50,9 @@ export const pollingFetchingCrypto = () => dispatch => {
                 }
             )
 
+
             dispatch({type: 'binance.fetchCryptoPrices',payload:values});
+
 
 
             return result;
