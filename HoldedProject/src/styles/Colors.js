@@ -13,7 +13,7 @@ export const COLOR_ERROR = '#F23636';
 export const COLOR_NEGATIVE_AVERAGE= '#B20000';
 export const COLOR_POSITIVE_AVERAGE= '#00CC00';
 export const COLOR_DISABLED = '#BFBFBF';
-export const COLOR_PRIMARY_ORANGE = '#FF6347';
+export const COLOR_PRIMARY_BLUE = '#030B76';
 
 export const COLOR_GRAY = '#C4C5C6';
 export const COLOR_GRAY_DARK = '#A3A3A3';

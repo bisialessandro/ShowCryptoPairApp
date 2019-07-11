@@ -5,7 +5,7 @@ import React ,{PureComponent} from 'react';
 import {View,StyleSheet} from 'react-native';
 import logo from '../../assets/img/holded.png'
 import ImageLoader from '../../components/ImageLoader/ImageLoader';
-import {COLOR_PRIMARY_ORANGE} from "../../styles/Colors";
+import {COLOR_PRIMARY_BLUE} from "../../styles/Colors";
 import {CONFIG_STORAGE} from '../../config/config-storage';
 import {storageService} from "../../services/storageServices/StorageServices";
 import NetInfo from "@react-native-community/netinfo";
@@ -21,9 +21,6 @@ class SplashScreen extends PureComponent{
 
 
 
-
-
-
             //Check if saved a property if and render
             const firstLogin = await storageService.retrieveData(CONFIG_STORAGE.FIRST_LOGIN);
 
@@ -35,7 +32,7 @@ class SplashScreen extends PureComponent{
 
 
 
-        },0);//2000
+        },2000);//2000
 
     }
 
@@ -54,7 +51,7 @@ class SplashScreen extends PureComponent{
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: COLOR_PRIMARY_ORANGE,
+        backgroundColor: COLOR_PRIMARY_BLUE,
     },
     logo: {
         width: '65%',

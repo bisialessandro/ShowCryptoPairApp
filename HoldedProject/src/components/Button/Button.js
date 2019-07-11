@@ -6,7 +6,7 @@ import React from 'react';
 import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 
 import styles from './Button-styles';
-import {COLOR_NEGATIVE, COLOR_PRIMARY_ORANGE} from "../../styles/Colors";
+import {COLOR_NEGATIVE, COLOR_PRIMARY_BLUE} from "../../styles/Colors";
 
 const Button = props => {
     return (
@@ -34,7 +34,7 @@ const Button = props => {
                 }}
             >
                 {props.withLoader ? (
-                    <ActivityIndicator size="large" color={props.withLoaderSync ? COLOR_NEGATIVE:COLOR_PRIMARY_ORANGE} />
+                    <ActivityIndicator size="large" color={props.withLoaderSync ? COLOR_NEGATIVE:COLOR_PRIMARY_BLUE} />
                 ) : (
                     <Text
                         style={[

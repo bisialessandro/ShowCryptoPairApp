@@ -5,7 +5,7 @@
 import { StyleSheet } from 'react-native';
 
 import {
-    COLOR_NEGATIVE, COLOR_PRIMARY_ORANGE,
+    COLOR_NEGATIVE, COLOR_PRIMARY_BLUE,
 } from '../../styles/Colors';
 
 import {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
     Button_Primary: {
         backgroundColor: COLOR_NEGATIVE,
-        color: COLOR_PRIMARY_ORANGE,
+        color: COLOR_PRIMARY_BLUE,
     },
     Button_Primary_Disabled: {
         borderWidth: 1,
@@ -44,19 +44,19 @@ const styles = StyleSheet.create({
         borderRadius:10
     },
     OrangeText: {
-        color: COLOR_PRIMARY_ORANGE,
+        color: COLOR_PRIMARY_BLUE,
     },
     WhiteText: {
         color: COLOR_NEGATIVE,
     },
 
     Button_Inverted:{
-        backgroundColor: COLOR_PRIMARY_ORANGE,
+        backgroundColor: COLOR_PRIMARY_BLUE,
     },
     Button_Inverted_Disabled:{
         backgroundColor: 'transparent',
         borderWidth: 1,
-        borderColor: COLOR_PRIMARY_ORANGE,
+        borderColor: COLOR_PRIMARY_BLUE,
     }
 
 });
