@@ -21,7 +21,7 @@ Open the Android folder with Android Studio and build it.
 
 ### Before Run iOS
 Enter inside the iOS folder and run the command:
-- pod install 
+- pod install <br/>
 Open the ios project with Xcode and build it.
 
 ### Running on emulators or connected devices 
