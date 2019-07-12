@@ -18,7 +18,7 @@ const WelcomePageComponent = (props) => {
         <Image  source={holded}  style={styles.img}/>
         <TextH text title text={"Welcome to Holded App!"}/>
         <TextH text subTitle text={"Remain updated with your favourite crypto currency!"} />
-        <Button label="PARTICIPATE"
+        <Button label={"PARTICIPATE"}
                 onPress={props.onStartPress}
                 button
                 primary={true}

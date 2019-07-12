@@ -12,10 +12,6 @@ import store from './src/redux/store';
 import {connect, Provider} from 'react-redux';
 import AppStack from './src/router/AppStack';
 import {navigationService} from "./src/services/NavigationService";
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import persistor from "./src/redux/persistStore";
-import NetInfo from "@react-native-community/netinfo";
-import {setConnectionStatus, setConnectionType} from "./src/redux/utils";
 import NetworkCheckContainer from "./src/utils/NetworkCheckContainer";
 
 
@@ -30,11 +26,11 @@ class App extends Component {
         <View style={styles.container}>
             <Provider store = {store}>
 
-                    <NetworkCheckContainer/>
+                <NetworkCheckContainer/>
 
-                    <AppStack ref={navigatorRef => {
-                        navigationService.setTopLevelNavigator(navigatorRef);
-                    }}/>
+                <AppStack ref={navigatorRef => {
+                    navigationService.setTopLevelNavigator(navigatorRef);
+                }}/>
 
             </Provider>
 

@@ -7,7 +7,7 @@ import {View} from 'react-native';
 
 const NetworkCheckComponent = (props) => {
 
-    return (!props.isConnected&&<View></View>);
+    return (<View></View>);
 }
 
 export default NetworkCheckComponent;

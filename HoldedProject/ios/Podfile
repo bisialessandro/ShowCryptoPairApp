@@ -7,6 +7,5 @@ target 'HoldedProject' do
 
 
   # Pods for HoldedProject
-  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
 
 end
