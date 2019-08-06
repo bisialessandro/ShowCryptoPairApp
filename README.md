@@ -1,4 +1,4 @@
-# holdedTestApp
+# ShowCryptoPairApp
 Test mobile app that show a list of crypto currency 
 
 ## Getting Started
